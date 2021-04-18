@@ -8,23 +8,23 @@ Docker LEMP stack for local PHP development.
 
 **Stack**
 
-🚀 PHP 🚀 MySQL 🚀 Nginx 🚀 Node
+🚀 PHP 🚀 MySQL 🚀 Nginx 🚀 Alpine
 
 **Also Included**
 
-🚀 Composer 🚀 NPM 🚀 OpenSSL
+🚀 Composer 🚀 Node 🚀 NPM 🚀 OpenSSL
 
 ## Usage
 
 1. Place `docker-compose.yml` and `docker/` into your project directory
-2. See the `.env.example` for a list of supported environment variables
+2. See the `.env.example` for a list of required environment variables
 3. Get Docker up and running
 
 ```
 docker-compose up -d
 ```
 
-Now you can access your local development environment either via `http://localhost` or `https://localhost` in your browser. By default, Nginx points to `public` as the document root.
+Now you can access your local development environment either via `http://localhost` or `https://localhost` on your host system. By default, Nginx points to `public` as the document root.
 
 For SSL, see [this](https://stackoverflow.com/a/31900210/1620163) on how to enable self signed certificates in Chrome.
 
@@ -40,7 +40,7 @@ docker-compose exec node npm install
 Or to get an interactive prompt:
 
 ```
-docker-compose exec php /bin/bash
+docker-compose exec web /bin/sh
 ```
 
 ## License
