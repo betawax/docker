@@ -1,4 +1,4 @@
-FROM nginx:alpine
+FROM nginx:1.19-alpine
 
 RUN apk upgrade && apk add openssl && mkdir /etc/nginx/ssl && \
 openssl req -x509 -sha256 -newkey rsa:2048 -nodes -days 365 -subj "/CN=localhost" \
