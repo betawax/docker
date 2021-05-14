@@ -1,7 +1,7 @@
 FROM php:7.4-fpm-alpine
 WORKDIR /var/www
 
-RUN apk upgrade && apk add unzip \
+RUN apk update && apk add unzip \
 freetype-dev libjpeg-turbo-dev libpng-dev zlib-dev && \
 docker-php-ext-configure gd --with-freetype --with-jpeg && \
 docker-php-ext-install -j$(nproc) bcmath gd mysqli opcache pdo_mysql
