@@ -14,6 +14,10 @@ Docker LEMP stack for local PHP development.
 
 🚀 Composer 🚀 Node 🚀 NPM 🚀 OpenSSL
 
+**Bonus**
+
+🚀 Apache
+
 ## Usage
 
 1. Place `docker-compose.yml` and `docker/` into your project directory
