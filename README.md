@@ -1,50 +1,86 @@
-# Docker Stack
+# Docker PHP Stack
 
-Docker LEMP stack for local PHP development.
+A Docker stack for local PHP development.
 
-✔︎ Get up and running with Docker Compose in minutes  
-✔︎ Hassle free setup of local development environments  
-✔︎ Pre-configured services for included LEMP containers
+## Stack
 
-**Stack**
+### Included Services
 
-🚀 PHP 🚀 MySQL 🚀 Nginx 🚀 Alpine
+#### 🚀 PHP 8.0 or 7.4
 
-**Also Included**
+- PHP-FPM 8.0 or 7.4 to choose from
+- Common extensions and Composer pre-installed
+- Support for both Laravel and WordPress CLIs
 
-🚀 Composer 🚀 Node 🚀 NPM 🚀 OpenSSL
+#### 🚀 Nginx or Apache
 
-**Bonus**
+- Nginx or Apache to choose from
+- Both services commonly pre-configured
+- Self-signed SSL certificate included
 
-🚀 Apache
+#### 🚀 MySQL
+
+- MySQL 8.0 with UTF-8 Unicode support
+- Default database created on startup
+- For MySQL 5.7 see this [tag](https://github.com/betawax/docker/tree/mysql-5.7)
+
+#### 🚀 Node
+
+- Node and NPM for frontend tasks
+
+#### 🚀 Alpine
+
+- Alpine Linux for fast build times
 
 ## Usage
 
+### General Usage
+
 1. Place `docker-compose.yml` and `docker/` into your project directory
-2. See the `.env.example` for a list of required environment variables
-3. Get Docker up and running
+2. Optionally, customize the provided container and service configuration
+3. See the `.env.example` for a list of all supported environment variables
+
+Lastly, get Docker up and running:
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 
-Now you can access your local development environment either via `http://localhost` or `https://localhost` on your host system. By default, Nginx points to `public` as the document root.
+Now you can access your local development environment either via [http://localhost](http://localhost) or [https://localhost](https://localhost) on your host system. By default, the web service points to `public` as the document root. See the `.env.example` for how to connect to the database.
 
-For SSL, see [this](https://stackoverflow.com/a/31900210/1620163) on how to enable self signed certificates in Chrome.
+For SSL to work, you must [enable self-signed certificates](https://stackoverflow.com/a/31900210/1620163) in your browser.
 
-## Running commands in services
+### Customize the configuration
 
-Use `docker-compose exec <service> <command>` as usual:
+When customizing the provided configuration, you'll most likely want to:
+
+- Pick a web service to use in `docker-compose.yml`
+- Pick the PHP version to use in `docker/php/Dockerfile`
+- Enable the Laravel or WordPress CLI in `docker/php/Dockerfile`
+- Change the database environment variables in `docker-compose.yml`
+
+### Run commands inside services
+
+Use `docker compose exec <service> <command>`:
 
 ```
-docker-compose exec php composer install
-docker-compose exec node npm install
+docker compose exec php composer install
+docker compose exec node npm install
 ```
 
-Or to get an interactive prompt:
+Or, to get an interactive prompt (shell):
 
 ```
-docker-compose exec web /bin/sh
+docker compose exec web /bin/sh
+```
+
+### Use the Laravel or WordPress CLI
+
+Enable and call the alias defined in `docker/php/Dockerfile`:
+
+```
+docker compose exec php artisan
+docker compose exec php wp
 ```
 
 ## License
