@@ -6,9 +6,9 @@ A Docker stack for local PHP development.
 
 ### Included Services
 
-#### 🚀 PHP 8.0 or 7.4
+#### 🚀 PHP 8 or 7.4
 
-- PHP-FPM 8.0 or 7.4 to choose from
+- PHP-FPM 8.x or 7.4 to choose from
 - Common extensions and Composer pre-installed
 - Support for both Laravel and WordPress CLIs
 
